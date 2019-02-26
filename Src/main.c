@@ -77,6 +77,17 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+void funKEYC13(void)
+{
+	printf("\r\n%s\r\n",__FUNCTION__);
+	HAL_GPIO_TogglePin(LEDD13_GPIO_Port, LEDD13_Pin);
+}
+void funKEYE0(void)
+{
+	printf("\r\n%s\r\n",__FUNCTION__);
+	HAL_GPIO_TogglePin(LEDG14_GPIO_Port, LEDG14_Pin);
+}
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
 	printf("GPIO_Pin=%08x\r\n",GPIO_Pin);
@@ -84,20 +95,14 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	{
 				HAL_Delay(2);
 				if(HAL_GPIO_ReadPin(KEYC13_GPIO_Port,KEYC13_Pin)==0)
-				{
-					printf("KEYC13_Pin Com\r\n");
-					HAL_GPIO_WritePin(LEDD13_GPIO_Port, LEDD13_Pin, GPIO_PIN_SET);
-				}
+					funKEYC13();
 
 	}
 	else  if(GPIO_Pin==KEYE0_Pin)
 	{
 				HAL_Delay(2);
 				if(HAL_GPIO_ReadPin(KEYE0_GPIO_Port,KEYE0_Pin)==0)
-				{
-					printf("KEYE0_Pin Com\r\n");
-				  HAL_GPIO_WritePin(LEDD13_GPIO_Port, LEDD13_Pin, GPIO_PIN_RESET);
-				}
+					funKEYE0();
 
 	}
 	else printf("ERR COM--");
@@ -134,9 +139,10 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART1_UART_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-HAL_GPIO_WritePin(LEDD13_GPIO_Port, LEDD13_Pin, GPIO_PIN_SET);//SET--ÁÁÆð RESET--Ï¨Ãð
-HAL_GPIO_WritePin(LEDG14_GPIO_Port, LEDG14_Pin, GPIO_PIN_SET);//SET--ÁÁÆð RESET--Ï¨Ãð
+	HAL_GPIO_WritePin(LEDD13_GPIO_Port, LEDD13_Pin, GPIO_PIN_SET);//SET--ÁÁÆð RESET--Ï¨Ãð
+	HAL_GPIO_WritePin(LEDG14_GPIO_Port, LEDG14_Pin, GPIO_PIN_SET);//SET--ÁÁÆð RESET--Ï¨Ãð
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -145,6 +151,7 @@ HAL_GPIO_WritePin(LEDG14_GPIO_Port, LEDG14_Pin, GPIO_PIN_SET);//SET--ÁÁÆð RESET-
   {
 		printf("\r\n%s\r\n",__FUNCTION__);
 		HAL_Delay(1000);
+		HAL_UART_Transmit(&huart2 , (uint8_t *)"I-AM-U2\r\n",10 , 0xffff);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
