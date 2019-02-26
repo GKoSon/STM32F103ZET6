@@ -1,0 +1,9 @@
+zet6\datapointtools.o: Utils\dataPointTools.c
+zet6\datapointtools.o: Utils\dataPointTools.h
+zet6\datapointtools.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+zet6\datapointtools.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+zet6\datapointtools.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+zet6\datapointtools.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+zet6\datapointtools.o: Utils\common.h
+zet6\datapointtools.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+zet6\datapointtools.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h

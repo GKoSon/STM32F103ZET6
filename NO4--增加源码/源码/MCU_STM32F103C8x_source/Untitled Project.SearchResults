@@ -1,0 +1,12 @@
+---- gizwitsEventProcess Matches (11 in 4 files) ----
+Gizwits_product.c (gizwits):int8_t gizwitsEventProcess(eventInfo_t *info, uint8_t *gizdata, uint32_t len)
+Gizwits_product.h (gizwits):int8_t gizwitsEventProcess(eventInfo_t *info, uint8_t *data, uint32_t len);
+Gizwits_protocol.c (gizwits):            gizwitsEventProcess(&gizwitsProtocol.issuedProcessEvent, (uint8_t *)&gizwitsProtocol.gizCurrentDataPoint, sizeof(dataPoint_t));
+Gizwits_protocol.c (gizwits):            gizwitsEventProcess(&gizwitsProtocol.wifiStatusEvent, (uint8_t *)&gizwitsProtocol.wifiStatusData, sizeof(moduleStatusInfo_t));
+Gizwits_protocol.c (gizwits):            gizwitsEventProcess(&gizwitsProtocol.issuedProcessEvent, (uint8_t *)gizwitsProtocol.transparentBuff, gizwitsProtocol.transparentLen);
+Gizwits_protocol.c (gizwits):            gizwitsEventProcess(&gizwitsProtocol.NTPEvent, (uint8_t *)&gizwitsProtocol.TimeNTP, sizeof(protocolTime_t));
+Gizwits_protocol.c (gizwits):            gizwitsEventProcess(&gizwitsProtocol.moduleInfoEvent, (uint8_t *)&gizwitsProtocol.wifiModuleNews, sizeof(moduleInfo_t));
+STM32F103C8x.htm (mdk-arm\stm32f103c8x):<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizwitsEventProcess
+STM32F103C8x.htm (mdk-arm\stm32f103c8x):<P><STRONG><a name="[a5]"></a>gizwitsEventProcess</STRONG> (Thumb, 138 bytes, Stack size 32 bytes, gizwits_product.o(i.gizwitsEventProcess))
+STM32F103C8x.htm (mdk-arm\stm32f103c8x):<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = gizwitsEventProcess &rArr; __2printf
+STM32F103C8x.htm (mdk-arm\stm32f103c8x):<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizwitsEventProcess
