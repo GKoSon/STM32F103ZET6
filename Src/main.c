@@ -83,8 +83,9 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef*UartHandle)
     if(UartHandle->Instance == USART2)  
     {  
 				gizPutData((uint8_t *)&aRxBuffer, 1);
-
+          
         HAL_UART_Receive_IT(&huart2, (uint8_t *)&aRxBuffer, 1);
+			  printf("U2 RECEIVED %02x ",aRxBuffer);
     }  
 }  
 
@@ -191,7 +192,7 @@ int main(void)
   {
 		printf("\r\n%s\r\n",__FUNCTION__);
 		HAL_Delay(1000);
-		HAL_UART_Transmit(&huart2 , (uint8_t *)"I-AM-U2\r\n",10 , 0xffff);
+		
 		
 		userHandle();
 		gizwitsHandle((dataPoint_t *)&currentDataPoint);

@@ -3,11 +3,11 @@
 <title>Static Call Graph - [ZET6\ZET6.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ZET6\ZET6.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue Feb 26 14:25:53 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Tue Feb 26 16:10:42 2019
 <BR><P>
-<H3>Maximum Stack Usage =        248 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        296 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; gizwitsHandle &rArr; gizProtocolGetDeviceInfo &rArr; gizProtocolHeadInit &rArr; __2printf
+main &rArr; gizwitsHandle &rArr; gizProtocolGetDeviceInfo &rArr; uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 <P>
 <H3>
 Mutually Recursive functions
@@ -385,14 +385,14 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xe.o(RESET)
 </UL>
 <P><STRONG><a name="[10]"></a>EXTI0_IRQHandler</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.EXTI0_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = EXTI0_IRQHandler &rArr; HAL_GPIO_EXTI_IRQHandler &rArr; HAL_GPIO_EXTI_Callback &rArr; funKEYE0 &rArr; gizwitsSetMode &rArr; gizProtocolWaitAck &rArr; __2printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = EXTI0_IRQHandler &rArr; HAL_GPIO_EXTI_IRQHandler &rArr; HAL_GPIO_EXTI_Callback &rArr; funKEYE0 &rArr; gizwitsSetMode &rArr; uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_EXTI_IRQHandler
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xe.o(RESET)
 </UL>
 <P><STRONG><a name="[32]"></a>EXTI15_10_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f1xx_it.o(i.EXTI15_10_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = EXTI15_10_IRQHandler &rArr; HAL_GPIO_EXTI_IRQHandler &rArr; HAL_GPIO_EXTI_Callback &rArr; funKEYE0 &rArr; gizwitsSetMode &rArr; gizProtocolWaitAck &rArr; __2printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = EXTI15_10_IRQHandler &rArr; HAL_GPIO_EXTI_IRQHandler &rArr; HAL_GPIO_EXTI_Callback &rArr; funKEYE0 &rArr; gizwitsSetMode &rArr; uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_EXTI_IRQHandler
 </UL>
@@ -420,7 +420,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[57]"></a>HAL_GPIO_EXTI_Callback</STRONG> (Thumb, 88 bytes, Stack size 16 bytes, main.o(i.HAL_GPIO_EXTI_Callback))
-<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = HAL_GPIO_EXTI_Callback &rArr; funKEYE0 &rArr; gizwitsSetMode &rArr; gizProtocolWaitAck &rArr; __2printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = HAL_GPIO_EXTI_Callback &rArr; funKEYE0 &rArr; gizwitsSetMode &rArr; uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[59]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_ReadPin
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
@@ -432,7 +432,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[54]"></a>HAL_GPIO_EXTI_IRQHandler</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, stm32f1xx_hal_gpio.o(i.HAL_GPIO_EXTI_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = HAL_GPIO_EXTI_IRQHandler &rArr; HAL_GPIO_EXTI_Callback &rArr; funKEYE0 &rArr; gizwitsSetMode &rArr; gizProtocolWaitAck &rArr; __2printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = HAL_GPIO_EXTI_IRQHandler &rArr; HAL_GPIO_EXTI_Callback &rArr; funKEYE0 &rArr; gizwitsSetMode &rArr; uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_EXTI_Callback
 </UL>
@@ -462,10 +462,10 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[56]"></a>HAL_GetTick</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f1xx_hal.o(i.HAL_GetTick))
-<BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
+<BR><BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
 <LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
 </UL>
 
@@ -692,11 +692,12 @@ Global Symbols
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
 </UL>
 
-<P><STRONG><a name="[80]"></a>HAL_UART_RxCpltCallback</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, main.o(i.HAL_UART_RxCpltCallback))
+<P><STRONG><a name="[80]"></a>HAL_UART_RxCpltCallback</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, main.o(i.HAL_UART_RxCpltCallback))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = HAL_UART_RxCpltCallback &rArr; gizPutData &rArr; rbWrite &rArr;  rbWrite (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizPutData
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_Receive_IT
 </UL>
@@ -707,7 +708,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uartWrite
 <LI><a href="#[4a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fputc
 </UL>
 
@@ -846,6 +847,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;funKEYE0
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;funKEYC13
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_EXTI_Callback
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizwitsSetMode
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizwitsInit
@@ -868,6 +870,7 @@ Global Symbols
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizDataPoints2ReportData
 <LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizDataPoint2Event
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizPutData
+<LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uartWrite
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizwitsEventProcess
 </UL>
 
@@ -900,7 +903,7 @@ Global Symbols
 <BR>[Address Reference Count : 1]<UL><LI> printf8.o(i.__0printf$8)
 </UL>
 <P><STRONG><a name="[5a]"></a>funKEYC13</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, main.o(i.funKEYC13))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = funKEYC13 &rArr; gizwitsSetMode &rArr; gizProtocolWaitAck &rArr; __2printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = funKEYC13 &rArr; gizwitsSetMode &rArr; uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizwitsSetMode
@@ -910,7 +913,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[5b]"></a>funKEYE0</STRONG> (Thumb, 36 bytes, Stack size 8 bytes, main.o(i.funKEYE0))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = funKEYE0 &rArr; gizwitsSetMode &rArr; gizProtocolWaitAck &rArr; __2printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = funKEYE0 &rArr; gizwitsSetMode &rArr; uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_TogglePin
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizwitsSetMode
@@ -991,7 +994,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[b8]"></a>gizwitsHandle</STRONG> (Thumb, 506 bytes, Stack size 88 bytes, gizwits_protocol.o(i.gizwitsHandle))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = gizwitsHandle &rArr; gizProtocolGetDeviceInfo &rArr; gizProtocolHeadInit &rArr; __2printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 296<LI>Call Chain = gizwitsHandle &rArr; gizProtocolGetDeviceInfo &rArr; uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizProtocolWaitAckCheck
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizProtocolNTP
@@ -1025,7 +1028,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[97]"></a>gizwitsSetMode</STRONG> (Thumb, 222 bytes, Stack size 48 bytes, gizwits_protocol.o(i.gizwitsSetMode))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = gizwitsSetMode &rArr; gizProtocolWaitAck &rArr; __2printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = gizwitsSetMode &rArr; uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizProtocolSum
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exchangeBytes
@@ -1038,14 +1041,13 @@ Global Symbols
 <LI><a href="#[5a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;funKEYC13
 </UL>
 
-<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 120 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = main &rArr; gizwitsHandle &rArr; gizProtocolGetDeviceInfo &rArr; gizProtocolHeadInit &rArr; __2printf
+<P><STRONG><a name="[46]"></a>main</STRONG> (Thumb, 104 bytes, Stack size 0 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 296<LI>Call Chain = main &rArr; gizwitsHandle &rArr; gizProtocolGetDeviceInfo &rArr; uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART2_UART_Init
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init
 <LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM6_Init
 <LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
 <LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
@@ -1120,8 +1122,13 @@ Global Symbols
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizPutData
 </UL>
 
-<P><STRONG><a name="[a5]"></a>uartWrite</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, gizwits_product.o(i.uartWrite))
-<BR><BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizwitsSetMode
+<P><STRONG><a name="[a5]"></a>uartWrite</STRONG> (Thumb, 112 bytes, Stack size 24 bytes, gizwits_product.o(i.uartWrite))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
+</UL>
+<BR>[Calls]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
+<LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+</UL>
+<BR>[Called By]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizwitsSetMode
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizReportData
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizProtocolResendData
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizProtocolIssuedDataAck
@@ -1162,7 +1169,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[9d]"></a>gizDevReportPolicy</STRONG> (Thumb, 150 bytes, Stack size 32 bytes, gizwits_protocol.o(i.gizDevReportPolicy))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = gizDevReportPolicy &rArr; gizReportData &rArr; gizProtocolWaitAck &rArr; __2printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = gizDevReportPolicy &rArr; gizReportData &rArr; uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizReportData
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizDataPoints2ReportData
@@ -1173,7 +1180,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[a0]"></a>gizProtocolAckHandle</STRONG> (Thumb, 80 bytes, Stack size 8 bytes, gizwits_protocol.o(i.gizProtocolAckHandle))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = gizProtocolAckHandle &rArr; gizProtocolResendData &rArr; __2printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = gizProtocolAckHandle &rArr; gizProtocolResendData &rArr; uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizProtocolResendData
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizGetTimerCount
@@ -1184,7 +1191,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[a2]"></a>gizProtocolCommonAck</STRONG> (Thumb, 80 bytes, Stack size 24 bytes, gizwits_protocol.o(i.gizProtocolCommonAck))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = gizProtocolCommonAck &rArr; __2printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = gizProtocolCommonAck &rArr; uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizProtocolSum
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exchangeBytes
@@ -1195,7 +1202,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[a6]"></a>gizProtocolErrorCmd</STRONG> (Thumb, 88 bytes, Stack size 24 bytes, gizwits_protocol.o(i.gizProtocolErrorCmd))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = gizProtocolErrorCmd &rArr; gizProtocolHeadInit &rArr; __2printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = gizProtocolErrorCmd &rArr; uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizProtocolSum
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exchangeBytes
@@ -1207,7 +1214,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[a8]"></a>gizProtocolGetDeviceInfo</STRONG> (Thumb, 180 bytes, Stack size 128 bytes, gizwits_protocol.o(i.gizProtocolGetDeviceInfo))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = gizProtocolGetDeviceInfo &rArr; gizProtocolHeadInit &rArr; __2printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = gizProtocolGetDeviceInfo &rArr; uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizProtocolSum
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exchangeBytes
@@ -1245,7 +1252,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[ae]"></a>gizProtocolIssuedDataAck</STRONG> (Thumb, 198 bytes, Stack size 72 bytes, gizwits_protocol.o(i.gizProtocolIssuedDataAck))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = gizProtocolIssuedDataAck &rArr; __2printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = gizProtocolIssuedDataAck &rArr; uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizProtocolSum
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uartWrite
@@ -1287,7 +1294,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[a1]"></a>gizProtocolResendData</STRONG> (Thumb, 54 bytes, Stack size 8 bytes, gizwits_protocol.o(i.gizProtocolResendData))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = gizProtocolResendData &rArr; __2printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = gizProtocolResendData &rArr; uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uartWrite
 <LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizGetTimerCount
@@ -1318,7 +1325,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[9f]"></a>gizReportData</STRONG> (Thumb, 124 bytes, Stack size 32 bytes, gizwits_protocol.o(i.gizReportData))
-<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = gizReportData &rArr; gizProtocolWaitAck &rArr; __2printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = gizReportData &rArr; uartWrite &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gizProtocolSum
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exchangeBytes

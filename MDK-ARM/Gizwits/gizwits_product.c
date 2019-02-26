@@ -16,7 +16,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "gizwits_product.h"
-
+#include "usart.h"
 static uint32_t timerMsCount;
 
 /** Current datapoint */
@@ -247,14 +247,15 @@ void UART_IRQ_FUN(void)
 int32_t uartWrite(uint8_t *buf, uint32_t len)
 {
     uint32_t i = 0;
-    
+    uint8_t ph = 0x55;
     if(NULL == buf)
     {
         return -1;
     }
     
-    #ifdef PROTOCOL_DEBUG
-    GIZWITS_LOG("MCU2WiFi[%4d:%4d]: ", gizGetTimerCount(), len);
+   // #ifdef PROTOCOL_DEBUG
+    #if 1
+		GIZWITS_LOG("MCU2WiFi[%4d:%4d]: ", gizGetTimerCount(), len);
     for(i=0; i<len; i++)
     {
         GIZWITS_LOG("%02x ", buf[i]);
@@ -264,12 +265,11 @@ int32_t uartWrite(uint8_t *buf, uint32_t len)
 
     for(i=0; i<len; i++)
     {
-        //USART_SendData(UART, buf[i]);//STM32 test demo
-        //Serial port to achieve the function, the buf[i] sent to the module
+			  HAL_UART_Transmit(&huart2 , &buf[i],1 , 0xffff);
+
         if(i >=2 && buf[i] == 0xFF)
         {
-          //Serial port to achieve the function, the 0x55 sent to the module
-          //USART_SendData(UART, 0x55);//STM32 test demo
+					HAL_UART_Transmit(&huart2 , &ph,1 , 0xffff);
         }
     }
 
