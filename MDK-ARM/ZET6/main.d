@@ -29,3 +29,10 @@ zet6\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 zet6\main.o: ../Inc/tim.h
 zet6\main.o: ../Inc/usart.h
 zet6\main.o: ../Inc/gpio.h
+zet6\main.o: .\Gizwits\gizwits_product.h
+zet6\main.o: .\Gizwits\gizwits_protocol.h
+zet6\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+zet6\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+zet6\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+zet6\main.o: .\Utils\common.h
+zet6\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h

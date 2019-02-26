@@ -44,6 +44,9 @@
 #include "usart.h"
 #include "gpio.h"
 
+
+#include "gizwits_product.h"
+#include "gizwits_protocol.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -121,6 +124,8 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   * @brief  The application entry point.
   * @retval int
   */
+
+uint8_t aRxBuffer;
 int main(void)
 {
   /* USER CODE BEGIN 1 */
@@ -151,9 +156,12 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	HAL_GPIO_WritePin(LEDD13_GPIO_Port, LEDD13_Pin, GPIO_PIN_SET);//SET--ÁÁÆð RESET--Ï¨Ãð
 	HAL_GPIO_WritePin(LEDG14_GPIO_Port, LEDG14_Pin, GPIO_PIN_SET);//SET--ÁÁÆð RESET--Ï¨Ãð
-	HAL_TIM_Base_Start_IT(&htim6);
+	HAL_TIM_Base_Start_IT(&htim6);//	timerInit();
+	HAL_UART_Receive_IT(&huart2, (uint8_t *)&aRxBuffer, 1);//uartInit();
   /* USER CODE END 2 */
-
+	userInit();
+	gizwitsInit();
+	GIZWITS_LOG("MCU Init Success \n");
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -161,6 +169,9 @@ int main(void)
 		printf("\r\n%s\r\n",__FUNCTION__);
 		HAL_Delay(1000);
 		HAL_UART_Transmit(&huart2 , (uint8_t *)"I-AM-U2\r\n",10 , 0xffff);
+		
+		userHandle();
+		gizwitsHandle((dataPoint_t *)&currentDataPoint);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
