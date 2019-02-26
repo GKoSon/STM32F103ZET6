@@ -25,8 +25,8 @@ gizwitsProtocol_t gizwitsProtocol;
 * @{
 */
 rb_t pRb;                                               ///< Ring buffer structure variable
-static uint8_t rbBuf[RB_MAX_LEN];                       ///< Ring buffer data cache buffer
-
+//static uint8_t rbBuf[RB_MAX_LEN];                       ///< Ring buffer data cache buffer
+uint8_t rbBuf[RB_MAX_LEN]__attribute__ ((at(0X20001000)));  
 
 /**@} */
 

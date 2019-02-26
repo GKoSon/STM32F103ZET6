@@ -75,12 +75,27 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+
+
+uint8_t aRxBuffer;
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef*UartHandle)  
+{  
+    if(UartHandle->Instance == USART2)  
+    {  
+				gizPutData((uint8_t *)&aRxBuffer, 1);
+
+        HAL_UART_Receive_IT(&huart2, (uint8_t *)&aRxBuffer, 1);
+    }  
+}  
+
+
 /* USER CODE BEGIN PFP */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
 	if(htim == &htim6)
 	{	
-		HAL_GPIO_TogglePin(LEDD13_GPIO_Port, LEDD13_Pin);
+		//HAL_GPIO_TogglePin(LEDD13_GPIO_Port, LEDD13_Pin);
+		gizTimerMs();
 	}
 }
 /* USER CODE END PFP */
@@ -91,12 +106,20 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 void funKEYC13(void)
 {
 	printf("\r\n%s\r\n",__FUNCTION__);
-	HAL_GPIO_TogglePin(LEDD13_GPIO_Port, LEDD13_Pin);
+	HAL_GPIO_TogglePin(LEDG14_GPIO_Port, LEDG14_Pin);
+	GIZWITS_LOG("KEY2 PRESS ,Soft AP mode\n");
+	#if !MODULE_TYPE
+	gizwitsSetMode(WIFI_SOFTAP_MODE);
+	#endif
 }
 void funKEYE0(void)
 {
 	printf("\r\n%s\r\n",__FUNCTION__);
-	HAL_GPIO_TogglePin(LEDG14_GPIO_Port, LEDG14_Pin);
+	HAL_GPIO_TogglePin(LEDD13_GPIO_Port, LEDD13_Pin);
+	GIZWITS_LOG("KEY2 PRESS LONG ,AirLink mode\n");
+	#if !MODULE_TYPE
+	gizwitsSetMode(WIFI_AIRLINK_MODE);
+	#endif
 }
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
@@ -125,7 +148,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   * @retval int
   */
 
-uint8_t aRxBuffer;
+
 int main(void)
 {
   /* USER CODE BEGIN 1 */

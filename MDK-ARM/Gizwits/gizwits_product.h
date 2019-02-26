@@ -41,7 +41,7 @@ extern "C" {
 
 
 extern dataPoint_t currentDataPoint;
-
+void gizTimerMs(void);
 void userInit(void);
 void userHandle(void);
 void mcuRestart(void);
