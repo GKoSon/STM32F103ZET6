@@ -1,0 +1,40 @@
+按键一旦按下 程序就挂了
+为什么？
+因为延时函数狗带了 他的优先级是 0 0 按键的你没有设置的话MX给出的也是0 0撞车了
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI0_IRQn, 1, 1);
+  HAL_NVIC_EnableIRQ(EXTI0_IRQn);
+
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 1, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
+
+修改为即可：
+1, 1);
+ 1, 0);
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	printf("GPIO_Pin=%08x\r\n",GPIO_Pin);
+  if(GPIO_Pin==KEYC13_Pin)
+	{
+				HAL_Delay(2);
+				if(HAL_GPIO_ReadPin(KEYC13_GPIO_Port,KEYC13_Pin)==0)
+				{
+					printf("KEYC13_Pin Com\r\n");
+					HAL_GPIO_WritePin(LEDD13_GPIO_Port, LEDD13_Pin, GPIO_PIN_SET);
+				}
+
+	}
+	else  if(GPIO_Pin==KEYE0_Pin)
+	{
+				HAL_Delay(2);
+				if(HAL_GPIO_ReadPin(KEYE0_GPIO_Port,KEYE0_Pin)==0)
+				{
+					printf("KEYE0_Pin Com\r\n");
+				  HAL_GPIO_WritePin(LEDD13_GPIO_Port, LEDD13_Pin, GPIO_PIN_RESET);
+				}
+
+	}
+	else printf("ERR COM--");
+
+}

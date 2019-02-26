@@ -77,7 +77,32 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	printf("GPIO_Pin=%08x\r\n",GPIO_Pin);
+  if(GPIO_Pin==KEYC13_Pin)
+	{
+				HAL_Delay(2);
+				if(HAL_GPIO_ReadPin(KEYC13_GPIO_Port,KEYC13_Pin)==0)
+				{
+					printf("KEYC13_Pin Com\r\n");
+					HAL_GPIO_WritePin(LEDD13_GPIO_Port, LEDD13_Pin, GPIO_PIN_SET);
+				}
 
+	}
+	else  if(GPIO_Pin==KEYE0_Pin)
+	{
+				HAL_Delay(2);
+				if(HAL_GPIO_ReadPin(KEYE0_GPIO_Port,KEYE0_Pin)==0)
+				{
+					printf("KEYE0_Pin Com\r\n");
+				  HAL_GPIO_WritePin(LEDD13_GPIO_Port, LEDD13_Pin, GPIO_PIN_RESET);
+				}
+
+	}
+	else printf("ERR COM--");
+
+}
 /* USER CODE END 0 */
 
 /**
