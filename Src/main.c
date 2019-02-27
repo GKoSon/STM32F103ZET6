@@ -85,7 +85,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef*UartHandle)
 				gizPutData((uint8_t *)&aRxBuffer, 1);
           
         HAL_UART_Receive_IT(&huart2, (uint8_t *)&aRxBuffer, 1);
-			  printf("U2 RECEIVED %02x ",aRxBuffer);
+			 // printf("U2 RECEIVED %02x ",aRxBuffer);
     }  
 }  
 

@@ -70,10 +70,12 @@ int8_t gizwitsEventProcess(eventInfo_t *info, uint8_t *gizdata, uint32_t len)
         if(0x01 == currentDataPoint.valuePOWER)
         {
           //user handle
+					HAL_GPIO_WritePin(LEDD13_GPIO_Port, LEDD13_Pin, GPIO_PIN_SET);
         }
         else
         {
-          //user handle    
+          //user handle
+					HAL_GPIO_WritePin(LEDD13_GPIO_Port, LEDD13_Pin, GPIO_PIN_RESET);					
         }
         break;
 
